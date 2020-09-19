@@ -22,5 +22,5 @@ app.get('/repositorios/:linguagem',async (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Ouvindo na porta ${port}`);
+  console.log(`Running`);
 })

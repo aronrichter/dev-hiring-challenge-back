@@ -28,9 +28,11 @@ module.exports = {
 
   async delete(linguagem) {
     console.log("Excluído: ", linguagem);
-    await db.query('DELETE FROM repositorio WHERE linguagem = $1', [
+    const retorno = await db.query('DELETE FROM repositorio WHERE linguagem = $1', [
       toUpperCase(linguagem)
     ]);
+
+    console.log(retorno)
   
     return true;
   },

@@ -24,22 +24,15 @@ module.exports = {
         item.watchers,
         item.private]
     );
-    return true;
   },
 
   async delete(linguagem) {
-    console.log("Excluído: ", linguagem);
-    const retorno = await db.query('DELETE FROM repositorio WHERE linguagem = $1', [
+    await db.query('DELETE FROM repositorio WHERE linguagem = $1', [
       linguagem.toUpperCase()
     ]);
-
-    console.log(retorno)
-  
-    return true;
   },
 
   async read(linguagem) {
-    console.log("Encontrado: ", linguagem)
     const response = await db.query('SELECT * FROM repositorio WHERE linguagem = $1', [
       linguagem.toUpperCase()
     ]);

@@ -17,8 +17,8 @@ app.get('/repositorios/:linguagem',async (req, res) => {
       const retorno = await repositorioService.buscarRepositorios(req.params.linguagem);      
       return res.send(retorno);
     } catch (e) {
-      console.log(e);
-      return res.send("Erro:", e);
+      res.status(400);
+      res.send("Erro:", e);
     }
 })
 

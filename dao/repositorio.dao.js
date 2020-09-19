@@ -13,14 +13,15 @@ module.exports = {
         estrelas,
         seguidores,
         privado) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
-      [item.id, 
-        item.name,
+      [ item.name,
         item.owner.login,
+        item.description,
         item.html_url,
         item.language.toUpperCase(),
         item.forks_count,
         item.open_issues_count,
         item.stargazers_count,
+        item.watchers,
         item.private]
     );
     return true;

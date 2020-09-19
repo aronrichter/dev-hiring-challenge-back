@@ -17,7 +17,7 @@ module.exports = {
         item.owner.login,
         item.description,
         item.html_url,
-        item.language.toUpperCase(),
+        item.language.trim().toUpperCase(),
         item.forks_count,
         item.open_issues_count,
         item.stargazers_count,
@@ -28,13 +28,13 @@ module.exports = {
 
   async delete(linguagem) {
     await db.query('DELETE FROM repositorio WHERE linguagem = $1', [
-      linguagem.toUpperCase()
+      item.language.trim().toUpperCase()
     ]);
   },
 
   async read(linguagem) {
     const response = await db.query('SELECT * FROM repositorio WHERE linguagem = $1', [
-      linguagem.toUpperCase()
+      item.language.trim().toUpperCase()
     ]);
     
     return response.rows;

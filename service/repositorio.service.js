@@ -15,16 +15,11 @@ module.exports = {
       }
   
       await dao.delete(linguagem);
-      await insertRepositorios(retorno.data.items);
+      await retorno.data.items.map( async item => await dao.create(item));
   
       return await dao.read(linguagem);
     } catch (e) {
-      console.log("Erro de execução: ", e)
       throw Error(`Erro ao buscar repositórios da linguagem '${linguagem}'`);
     }
   },
-
-  async insertRepositorios(repositorios) {
-    await repositorios.map( async item => await dao.create(item));
-  }
 }

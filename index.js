@@ -18,7 +18,7 @@ app.get('/repositorios/:linguagem',async (req, res) => {
       return res.send(retorno);
     } catch (e) {
       console.log(e);
-      return res.status(400).send("Erro:", e);
+      return res.send("Erro:", e);
     }
 })
 

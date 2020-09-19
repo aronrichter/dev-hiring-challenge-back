@@ -28,13 +28,13 @@ module.exports = {
 
   async delete(linguagem) {
     await db.query('DELETE FROM repositorio WHERE linguagem = $1', [
-      item.language.trim().toUpperCase()
+      linguagem.trim().toUpperCase()
     ]);
   },
 
   async read(linguagem) {
     const response = await db.query('SELECT * FROM repositorio WHERE linguagem = $1', [
-      item.language.trim().toUpperCase()
+      linguagem.trim().toUpperCase()
     ]);
     
     return response.rows;

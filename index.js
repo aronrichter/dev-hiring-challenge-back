@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 5000;
-
 const repositorioService = require("./service/repositorio.service.js")
 
 app.use((req, res, next) => {
@@ -11,15 +10,9 @@ app.use((req, res, next) => {
 });
 
 app.get('/repositorios/:linguagem',async (req, res) => {
-  console.log("Recebido requisição com parâmetro: ", req.params)
-
-    try {
-      const retorno = await repositorioService.buscarRepositorios(req.params.linguagem);      
-      return res.send(retorno);
-    } catch (e) {
-      console.log(e)
-      return res.status(400).send(e)
-    }
+  return await repositorioService.buscarRepositorios(req.params.linguagem)
+    .then(response => res.send(response))
+    .catch (err => res.status(400).send(err.message));
 })
 
 app.listen(port, () => {
